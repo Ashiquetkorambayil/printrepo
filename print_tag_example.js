@@ -14,13 +14,15 @@ const template = fs.readFileSync(
 
 function buildLabel(product) {
   return template
-    .replace('{{STICK_GOLD_CODE}}', product.stickGoldCode)
-    .replace('{{KARAT}}', product.karat)
-    .replace('{{PRODUCT_CODE}}', product.productCode)
-    .replace('{{PRODUCT_NAME}}', product.productName)
+    .replace('{{LEFT_1}}', product.left1)
+    .replace('{{LEFT_2}}', product.left2)
+    .replace('{{LEFT_3}}', product.left3)
+    .replace('{{LEFT_4}}', product.left4)
     .replace('{{PRICE}}', product.price)
-    .replace('{{OTHER_DETAILS}}', product.otherDetails)
     .replace('{{COMPANY_NAME}}', product.companyName)
+    .replace('{{NET_WEIGHT}}', product.netWeight)
+    .replace('{{DIAMOND_WEIGHT}}', product.diamondWeight)
+    .replace('{{GOLD_KARAT}}', product.goldKarat)
     .replace(/{{BARCODE_VALUE}}/g, product.barcodeValue);
 }
 
@@ -50,13 +52,15 @@ function printTagMac(product, printerName) {
 // Example product data.
 printTagMac(
   {
-    stickGoldCode: 'ST-1023',
-    karat: '22K',
-    productCode: 'JW4587',
-    productName: 'Gold Chain',
-    price: '\u20B948,500',
-    otherDetails: 'Wt: 8.2g',
-    companyName: 'Your Jewellers Pvt Ltd',// Replace with your company name
+    left1: 'ER0141',
+    left2: 'AED 41,500',
+    left3: 'D-3.0',
+    left4: 'G-7.72',
+    price: 'AED 42,500',
+    companyName: 'PC0141',
+    netWeight: '8.2',
+    diamondWeight: '1.55',
+    goldKarat: '22K',
     barcodeValue: '4587120033',
   },
   process.env.PRINTER_NAME || 'Zebra_Technologies_ZTC_ZD220_203dpi_ZPL'
