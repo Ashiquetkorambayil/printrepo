@@ -56,7 +56,7 @@ printTagMac(
     productName: 'Gold Chain',
     price: '\u20B948,500',
     otherDetails: 'Wt: 8.2g',
-    companyName: 'Your Jewellers Pvt Ltd',
+    companyName: 'Your Jewellers Pvt Ltd',// Replace with your company name
     barcodeValue: '4587120033',
   },
   'Zebra_ZTC_ZD220' // Replace with the exact name from: lpstat -p
