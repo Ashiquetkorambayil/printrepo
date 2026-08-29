@@ -4,20 +4,26 @@
 ^FWN
 ^MNY
 ^PW656
-^LL176
+^LL304
 ^LH0,0
 ^LT0
 ^LS0
 ^PR2
 ^MD18
 
-^FX LEFT WING - BOTTOM PANEL (X: 0 to 160 dots, Y: 0 to 176 dots)
-^FO16,20^A0N,20,20^FD{{LEFT_1}}^FS
-^FO16,55^A0N,20,20^FD{{LEFT_2}}^FS
-^FO16,90^A0N,20,20^FD{{LEFT_3}}^FS
-^FO16,125^A0N,20,20^FD{{LEFT_4}}^FS
+^FX --------------------------------------------------
+^FX LEFT PANEL (BOTTOM WING)
+^FX Box area: X = 16 to 160 dots, Y = 130 to 290 dots
+^FX --------------------------------------------------
+^FO16,135^A0N,20,20^FD{{LEFT_1}}^FS
+^FO16,165^A0N,20,20^FD{{LEFT_2}}^FS
+^FO16,195^A0N,20,20^FD{{LEFT_3}}^FS
+^FO16,225^A0N,20,20^FD{{LEFT_4}}^FS
 
-^FX RIGHT WING - TOP PANEL (X: 496 to 656 dots, Y: 0 to 176 dots)
+^FX --------------------------------------------------
+^FX RIGHT PANEL (TOP WING)
+^FX Box area: X = 496 to 640 dots, Y = 10 to 160 dots
+^FX --------------------------------------------------
 ^FO506,10^A0N,18,18^FD{{COMPANY_NAME}}^FS
 ^FO506,30^A0N,16,16^FDNW: {{NET_WEIGHT}}^FS
 ^FO506,48^A0N,16,16^FDD: {{DIAMOND_WEIGHT}}^FS
