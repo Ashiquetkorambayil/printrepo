@@ -2,7 +2,7 @@
 ^PW304
 ^LL656
 ^LH0,0
-^MNY
+^MNN
 ^LT0
 ^LS0
 ^CI28
