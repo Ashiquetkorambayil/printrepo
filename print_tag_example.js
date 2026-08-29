@@ -1,12 +1,9 @@
 // print_tag_example.js
-// For USB-connected printers on macOS (uses the CUPS "lp" command).
-
 const { exec } = require('child_process');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-// Load the ZPL template from the same folder as this script.
 const template = fs.readFileSync(
   path.join(__dirname, 'jewellery_tag_template.zpl'),
   'utf8'
@@ -14,26 +11,25 @@ const template = fs.readFileSync(
 
 function buildLabel(product) {
   return template
-    .replace('{{LEFT_1}}', product.left1)
-    .replace('{{LEFT_2}}', product.left2)
-    .replace('{{LEFT_3}}', product.left3)
-    .replace('{{LEFT_4}}', product.left4)
-    .replace('{{PRICE}}', product.price)
-    .replace('{{COMPANY_NAME}}', product.companyName)
-    .replace('{{NET_WEIGHT}}', product.netWeight)
-    .replace('{{DIAMOND_WEIGHT}}', product.diamondWeight)
-    .replace('{{GOLD_KARAT}}', product.goldKarat)
-    .replace(/{{BARCODE_VALUE}}/g, product.barcodeValue);
+    .replace(/{{LEFT_1}}/g, product.left1 || '')
+    .replace(/{{LEFT_2}}/g, product.left2 || '')
+    .replace(/{{LEFT_3}}/g, product.left3 || '')
+    .replace(/{{LEFT_4}}/g, product.left4 || '')
+    .replace(/{{PRICE}}/g, product.price || '')
+    .replace(/{{COMPANY_NAME}}/g, product.companyName || '')
+    .replace(/{{NET_WEIGHT}}/g, product.netWeight || '')
+    .replace(/{{DIAMOND_WEIGHT}}/g, product.diamondWeight || '')
+    .replace(/{{GOLD_KARAT}}/g, product.goldKarat || '')
+    .replace(/{{BARCODE_VALUE}}/g, product.barcodeValue || '');
 }
 
-// printerName must exactly match the name shown by: lpstat -p
 function printTagMac(product, printerName) {
   const zpl = buildLabel(product);
   const tempFile = path.join(os.tmpdir(), `label_${Date.now()}.zpl`);
 
   fs.writeFileSync(tempFile, zpl, 'utf8');
 
-  // -o raw sends ZPL directly to the printer without converting it to text.
+  // -o raw passes direct ZPL to thermal printers without macOS rasterizing it
   const cmd = `lp -d "${printerName}" -o raw "${tempFile}"`;
 
   exec(cmd, (err, stdout, stderr) => {
@@ -44,12 +40,12 @@ function printTagMac(product, printerName) {
       return;
     }
 
-    console.log('Label sent to printer.');
+    console.log('Label sent to printer successfully.');
     if (stdout) console.log(stdout.trim());
   });
 }
 
-// Example product data.
+// Example Trigger
 printTagMac(
   {
     left1: 'ER0141',
