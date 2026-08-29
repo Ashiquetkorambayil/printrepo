@@ -2,7 +2,7 @@
 ^PW240
 ^LL800
 ^LH0,0
-^MNN
+^MNY
 ^LT0
 ^LS0
 ^CI28
